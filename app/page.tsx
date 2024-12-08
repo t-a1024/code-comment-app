@@ -8,6 +8,7 @@ import { getProblemByTitle ,getTitles} from "@/app/problems";
 import { useRouter } from "next/navigation";
 import { renderRadarChart } from "./Chart";
 import { saveToLocalStorage } from "@/utils/useLocalStrage";
+import CodeMirrorEditor from './CodeMirror';
 
 export interface scores{
     knowledge:number;//基礎知識
@@ -155,14 +156,20 @@ export default function Home() {
             </Button>
           </Box>
   
-          <TextField
+          {/* <TextField
             multiline
             rows={code.split('\n').length || 1}
             value={code}
             onChange={(e) => setCode(e.target.value)}
             sx={{ width: "100%", alignSelf: "center", backgroundColor: "#f5f5f5" }}
             disabled={state === FeedBack}
-          />
+          /> */}
+          <CodeMirrorEditor
+        code={code}
+        setCode={setCode}
+        state={state}
+        FeedBack={FeedBack}
+      />
   
           {/* 採点ボタン */}
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
